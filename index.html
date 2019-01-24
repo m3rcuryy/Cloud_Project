@@ -1,0 +1,24 @@
+<html>
+<h1>Instance Launch</h1>
+<form action="/cgi-bin/iaas.cgi">
+<div>Select OS type</div>
+<br/>
+<select name="o">
+  <option value="1">RedHat7.5 </option>
+  <option value="2">Ubuntu</option>
+  <option value="3">Windows 7</option>
+</select>
+Enter Machine Name: 
+<input name="n" placeholder="john">
+Enter RAM: 
+<input name="r" type="number" placeholder="1-512MiB">
+Enter CPU cores: 
+<input name="c" type="number" placeholder="1-2">
+Enter HDD: 
+<input name="h" type="number" placeholder="0-20GiB">
+<br/>
+<button type="submit">Launch
+</form>
+</html>
+
+
