@@ -15,7 +15,10 @@ web=cgi.FieldStorage()	#FieldStorage class to get at submitted form data
 #os_hdd=web.getvalue('h')
 
 username=web.getvalue('uname')
-password=web.getvalue('password')
+password=web.getvalue('psw')
+
+print username
+print password
 
 #print os_name
 #print  os_name,os_ram,os_cpu,os_hdd,vm_name 
@@ -46,9 +49,6 @@ elif  os_name ==  "1"  :
 	print commands.getoutput('websockify --web=/usr/share/novnc '+host_port+' 192.168.119.160:'+port)
 	time.sleep(10)
 	print '<a href= "http://192.168.119.160:8042" > Launch VM here</a>' '''
-
-print username
-print password
 
 #print '<pre>'
 #print commands.getoutput("sudo virsh list --all")
