@@ -4,8 +4,8 @@ import  cgi,cgitb,os,commands,time
 
 cgitb.enable()	#enable the exception handler
 
-print  "Content-type:text/html"		#To tell the client what kind of data is following, here HTML
-print  ""				#blank line, end of headers
+#print  "Content-type:text/html"		#To tell the client what kind of data is following, here HTML
+#print  ""				#blank line, end of headers
 
 web=cgi.FieldStorage()	#FieldStorage class to get at submitted form data
 #os_name=web.getvalue('o')
@@ -14,11 +14,19 @@ web=cgi.FieldStorage()	#FieldStorage class to get at submitted form data
 #os_cpu=web.getvalue('c')
 #os_hdd=web.getvalue('h')
 
-username=web.getvalue('uname')
-password=web.getvalue('psw')
+username=web.getvalue('uname')+""
+password=web.getvalue('psw')+""
 
-print username
-print password
+if username == "rashi" and password == "rashi":
+	print "Content-type:text/html"
+	print ""
+	print "<html>"
+	print "<body>"
+	print "<h1> YOU ARE LOGGED IN</h1>"
+	print "</body>"
+	print "</html>"
+else:
+	print "Location: http://www.localhost.localdomain/", "\n\n";
 
 #print os_name
 #print  os_name,os_ram,os_cpu,os_hdd,vm_name 
