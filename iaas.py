@@ -8,29 +8,28 @@ cgitb.enable()	#enable the exception handler
 #print  ""				#blank line, end of headers
 
 web=cgi.FieldStorage()	#FieldStorage class to get at submitted form data
-#os_name=web.getvalue('o')
-#vm_name=web.getvalue('n')
-#os_ram=web.getvalue('r')
-#os_cpu=web.getvalue('c')
-#os_hdd=web.getvalue('h')
 
-username=web.getvalue('uname')+""
-password=web.getvalue('psw')+""
-
-if username == "rashi" and password == "rashi":
+if "redhat" not in web:
+	username=web.getvalue('uname')+""
+	password=web.getvalue('psw')+""
+	if username == "rashi" and password == "rashi":
+		print "Content-type:text/html"
+		print ""
+		print "<html>"
+		print "<body>"
+		print "<h1> YOU ARE LOGGED IN</h1>"
+		print "</body>"
+		print "</html>"
+	else:
+		print "Location: http://www.localhost.localdomain/", "\n\n";
+else:
+	#vm=web.getvalue('redhat')
 	print "Content-type:text/html"
 	print ""
-	print "<html>"
-	print "<body>"
-	print "<h1> YOU ARE LOGGED IN</h1>"
-	print "</body>"
-	print "</html>"
-else:
-	print "Location: http://www.localhost.localdomain/", "\n\n";
+	print "OS Preparing"
+	
 
-#print os_name
-#print  os_name,os_ram,os_cpu,os_hdd,vm_name 
-#  launching os 
+
 '''flag=os.path.exists('/var/lib/libvirt/images/'+vm_name+'.qcow2')
 
 
