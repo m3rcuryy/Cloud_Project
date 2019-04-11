@@ -1,6 +1,7 @@
 #!/usr/bin/python2
 
 import  cgi,cgitb,os,commands,time
+import mysql.connector as mariadb
 
 cgitb.enable()	#enable the exception handler
 
@@ -9,15 +10,20 @@ cgitb.enable()	#enable the exception handler
 
 web=cgi.FieldStorage()	#FieldStorage class to get at submitted form data
 
+mariadb_connection = mariadb.connect(user='root', password='', database='cloud_project')
+cursor = mariadb_connection.cursor()
 if "redhat" not in web:
 	username=web.getvalue('uname')+""
 	password=web.getvalue('psw')+""
-	if username == "rashi" and password == "rashi":
+	cursor.execute("SELECT * FROM login where username=%s AND password=%s",(username,password));
+	flag=len(cursor.fetchall())
+	if flag == 1:
 		print "Content-type:text/html"
 		print ""
 		print "<html>"
 		print "<body>"
 		print "<h1> YOU ARE LOGGED IN</h1>"
+		print '<meta http-equiv = "refresh" content = "5; url = http://www.localhost.localdomain/dashboard.html" />'
 		print "</body>"
 		print "</html>"
 	else:
