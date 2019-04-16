@@ -35,6 +35,10 @@ else:
 	print "Content-type:text/html"
 	print ""
 	print "OS Preparing",username
+	cursor.execute("SELECT location FROM vm where username=%s",(username));
+	address=cursor.fetchall()[0]
+	print "Redirecting"
+	print '<meta http-equiv = "refresh" content = "5; url ='+ address+" />'
 	
 
 
